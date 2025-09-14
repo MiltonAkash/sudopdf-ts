@@ -1,11 +1,3 @@
-# Pets
-
-# Store
-
-## Orders
-
-# Users
-
 # Pdf
 
 Types:

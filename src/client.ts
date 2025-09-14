@@ -17,9 +17,6 @@ import * as Uploads from './core/uploads';
 import * as API from './resources/index';
 import { APIPromise } from './core/api-promise';
 import { Pdf, PdfGenerateParams, PdfGenerateResponse } from './resources/pdf';
-import { Pets } from './resources/pets';
-import { Users } from './resources/users';
-import { Store } from './resources/store/store';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
@@ -35,7 +32,7 @@ import { isEmptyObj } from './internal/utils/values';
 
 export interface ClientOptions {
   /**
-   * Defaults to process.env['PETSTORE_API_KEY'].
+   * Defaults to process.env['SUDOPDF_API_KEY'].
    */
   apiKey?: string | undefined;
 
@@ -129,8 +126,8 @@ export class Sudopdf {
   /**
    * API Client for interfacing with the Sudopdf API.
    *
-   * @param {string | undefined} [opts.apiKey=process.env['PETSTORE_API_KEY'] ?? undefined]
-   * @param {string} [opts.baseURL=process.env['SUDOPDF_BASE_URL'] ?? https://petstore3.swagger.io/api/v3] - Override the default base URL for the API.
+   * @param {string | undefined} [opts.apiKey=process.env['SUDOPDF_API_KEY'] ?? undefined]
+   * @param {string} [opts.baseURL=process.env['SUDOPDF_BASE_URL'] ?? http://app.sudopdf.com/api/v1] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
    * @param {Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -140,19 +137,19 @@ export class Sudopdf {
    */
   constructor({
     baseURL = readEnv('SUDOPDF_BASE_URL'),
-    apiKey = readEnv('PETSTORE_API_KEY'),
+    apiKey = readEnv('SUDOPDF_API_KEY'),
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
       throw new Errors.SudopdfError(
-        "The PETSTORE_API_KEY environment variable is missing or empty; either provide it, or instantiate the Sudopdf client with an apiKey option, like new Sudopdf({ apiKey: 'My API Key' }).",
+        "The SUDOPDF_API_KEY environment variable is missing or empty; either provide it, or instantiate the Sudopdf client with an apiKey option, like new Sudopdf({ apiKey: 'My API Key' }).",
       );
     }
 
     const options: ClientOptions = {
       apiKey,
       ...opts,
-      baseURL: baseURL || `https://petstore3.swagger.io/api/v3`,
+      baseURL: baseURL || `http://app.sudopdf.com/api/v1`,
     };
 
     this.baseURL = options.baseURL!;
@@ -198,7 +195,7 @@ export class Sudopdf {
    * Check whether the base URL is set to its default.
    */
   #baseURLOverridden(): boolean {
-    return this.baseURL !== 'https://petstore3.swagger.io/api/v3';
+    return this.baseURL !== 'http://app.sudopdf.com/api/v1';
   }
 
   protected defaultQuery(): Record<string, string | undefined> | undefined {
@@ -207,6 +204,10 @@ export class Sudopdf {
 
   protected validateHeaders({ values, nulls }: NullableHeaders) {
     return;
+  }
+
+  protected async authHeaders(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
+    return buildHeaders([{ 'X-API-KEY': this.apiKey }]);
   }
 
   /**
@@ -646,6 +647,7 @@ export class Sudopdf {
         ...(options.timeout ? { 'X-Stainless-Timeout': String(Math.trunc(options.timeout / 1000)) } : {}),
         ...getPlatformHeaders(),
       },
+      await this.authHeaders(options),
       this._options.defaultHeaders,
       bodyHeaders,
       options.headers,
@@ -712,25 +714,13 @@ export class Sudopdf {
 
   static toFile = Uploads.toFile;
 
-  pets: API.Pets = new API.Pets(this);
-  store: API.Store = new API.Store(this);
-  users: API.Users = new API.Users(this);
   pdf: API.Pdf = new API.Pdf(this);
 }
 
-Sudopdf.Pets = Pets;
-Sudopdf.Store = Store;
-Sudopdf.Users = Users;
 Sudopdf.Pdf = Pdf;
 
 export declare namespace Sudopdf {
   export type RequestOptions = Opts.RequestOptions;
-
-  export { Pets as Pets };
-
-  export { Store as Store };
-
-  export { Users as Users };
 
   export {
     Pdf as Pdf,

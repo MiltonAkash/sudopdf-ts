@@ -302,13 +302,13 @@ describe('instantiate client', () => {
     test('empty env variable', () => {
       process.env['SUDOPDF_BASE_URL'] = ''; // empty
       const client = new Sudopdf({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('https://petstore3.swagger.io/api/v3');
+      expect(client.baseURL).toEqual('http://app.sudopdf.com/api/v1');
     });
 
     test('blank env variable', () => {
       process.env['SUDOPDF_BASE_URL'] = '  '; // blank
       const client = new Sudopdf({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('https://petstore3.swagger.io/api/v3');
+      expect(client.baseURL).toEqual('http://app.sudopdf.com/api/v1');
     });
 
     test('in request options', () => {
@@ -413,14 +413,14 @@ describe('instantiate client', () => {
 
   test('with environment variable arguments', () => {
     // set options via env var
-    process.env['PETSTORE_API_KEY'] = 'My API Key';
+    process.env['SUDOPDF_API_KEY'] = 'My API Key';
     const client = new Sudopdf();
     expect(client.apiKey).toBe('My API Key');
   });
 
   test('with overridden environment variable arguments', () => {
     // set options via env var
-    process.env['PETSTORE_API_KEY'] = 'another My API Key';
+    process.env['SUDOPDF_API_KEY'] = 'another My API Key';
     const client = new Sudopdf({ apiKey: 'My API Key' });
     expect(client.apiKey).toBe('My API Key');
   });
