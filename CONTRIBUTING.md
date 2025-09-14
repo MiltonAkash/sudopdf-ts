@@ -42,15 +42,15 @@ If you’d like to use the repository from source, you can either install from g
 To install via git:
 
 ```sh
-$ npm install git+ssh://git@github.com:stainless-sdks/sudopdf-typescript.git
+$ npm install git+ssh://git@github.com:MiltonAkash/sudopdf-ts.git
 ```
 
 Alternatively, to link a local copy of the repo:
 
 ```sh
 # Clone
-$ git clone https://www.github.com/stainless-sdks/sudopdf-typescript
-$ cd sudopdf-typescript
+$ git clone https://www.github.com/MiltonAkash/sudopdf-ts
+$ cd sudopdf-ts
 
 # With yarn
 $ yarn link
