@@ -79,16 +79,16 @@ export namespace PdfGenerateResponse {
 
 export interface PdfGenerateParams {
   /**
+   * Body param: Any data that use inside the template. Prefer metadata if you are
+   * not planning to use that data inside template
+   */
+  data: { [key: string]: unknown };
+
+  /**
    * Query param: Whether to generate the PDF synchronously. Not recomended for
    * production use
    */
   sync?: boolean;
-
-  /**
-   * Body param: Any data that use inside the template. Prefer metadata if you are
-   * not planning to use that data inside template
-   */
-  data?: { [key: string]: unknown };
 
   /**
    * Body param:
