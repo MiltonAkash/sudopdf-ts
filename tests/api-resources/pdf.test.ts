@@ -9,8 +9,8 @@ const client = new Sudopdf({
 
 describe('resource pdf', () => {
   // Prism tests are disabled
-  test.skip('generate', async () => {
-    const responsePromise = client.pdf.generate({});
+  test.skip('generate: only required params', async () => {
+    const responsePromise = client.pdf.generate({ data: { foo: 'bar' } });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -18,5 +18,35 @@ describe('resource pdf', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // Prism tests are disabled
+  test.skip('generate: required and optional params', async () => {
+    const response = await client.pdf.generate({
+      data: { foo: 'bar' },
+      sync: true,
+      html: 'html',
+      metadata: { foo: 'bar' },
+      renderOptions: {
+        displayHeaderFooter: true,
+        footerTemplate: 'footerTemplate',
+        format: 'Letter',
+        headerTemplate: 'headerTemplate',
+        height: 'height',
+        landscape: true,
+        margin: { bottom: 'bottom', left: 'left', right: 'right', top: 'top' },
+        omitBackground: true,
+        pageRanges: 'pageRanges',
+        path: 'path',
+        preferCSSPageSize: true,
+        printBackground: true,
+        scale: 0.1,
+        timeout: 0,
+        width: 'width',
+      },
+      templateId: 'templateId',
+      templateType: 'react',
+      url: 'https://example.com',
+    });
   });
 });

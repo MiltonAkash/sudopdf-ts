@@ -29,7 +29,7 @@ const client = new Sudopdf({
   apiKey: process.env['SUDOPDF_API_KEY'], // This is the default and can be omitted
 });
 
-const response = await client.pdf.generate();
+const response = await client.pdf.generate({ data: { foo: 'bar' } });
 
 console.log(response.data);
 ```
@@ -46,7 +46,8 @@ const client = new Sudopdf({
   apiKey: process.env['SUDOPDF_API_KEY'], // This is the default and can be omitted
 });
 
-const response: Sudopdf.PdfGenerateResponse = await client.pdf.generate();
+const params: Sudopdf.PdfGenerateParams = { data: { foo: 'bar' } };
+const response: Sudopdf.PdfGenerateResponse = await client.pdf.generate(params);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -59,7 +60,7 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-const response = await client.pdf.generate().catch(async (err) => {
+const response = await client.pdf.generate({ data: { foo: 'bar' } }).catch(async (err) => {
   if (err instanceof Sudopdf.APIError) {
     console.log(err.status); // 400
     console.log(err.name); // BadRequestError
@@ -99,7 +100,7 @@ const client = new Sudopdf({
 });
 
 // Or, configure per-request:
-await client.pdf.generate({
+await client.pdf.generate({ data: { foo: 'bar' } }, {
   maxRetries: 5,
 });
 ```
@@ -116,7 +117,7 @@ const client = new Sudopdf({
 });
 
 // Override per-request:
-await client.pdf.generate({
+await client.pdf.generate({ data: { foo: 'bar' } }, {
   timeout: 5 * 1000,
 });
 ```
@@ -139,11 +140,11 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 ```ts
 const client = new Sudopdf();
 
-const response = await client.pdf.generate().asResponse();
+const response = await client.pdf.generate({ data: { foo: 'bar' } }).asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: response, response: raw } = await client.pdf.generate().withResponse();
+const { data: response, response: raw } = await client.pdf.generate({ data: { foo: 'bar' } }).withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(response.data);
 ```
