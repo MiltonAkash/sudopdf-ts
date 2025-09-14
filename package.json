@@ -1,5 +1,5 @@
 {
-  "name": "sudopdf",
+  "name": "@sudopdf/sdk",
   "version": "0.0.1",
   "description": "The official TypeScript library for the Sudopdf API",
   "author": "Sudopdf <>",
