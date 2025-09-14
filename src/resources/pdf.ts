@@ -88,7 +88,7 @@ export interface PdfGenerateParams {
    * Body param: Any data that use inside the template. Prefer metadata if you are
    * not planning to use that data inside template
    */
-  data?: unknown;
+  data?: { [key: string]: unknown };
 
   /**
    * Body param:
@@ -98,7 +98,7 @@ export interface PdfGenerateParams {
   /**
    * Body param: Data associated with this render but not used inside template.
    */
-  metadata?: unknown;
+  metadata?: { [key: string]: unknown };
 
   /**
    * Body param: Advanced rendering options for PDF generation
