@@ -7,8 +7,8 @@ const config: JestConfigWithTsJest = {
     '^.+\\.(t|j)sx?$': ['@swc/jest', { sourceMaps: 'inline' }],
   },
   moduleNameMapper: {
-    '^sudopdf$': '<rootDir>/src/index.ts',
-    '^sudopdf/(.*)$': '<rootDir>/src/$1',
+    '^@sudopdf/sdk$': '<rootDir>/src/index.ts',
+    '^@sudopdf/sdk/(.*)$': '<rootDir>/src/$1',
   },
   modulePathIgnorePatterns: [
     '<rootDir>/ecosystem-tests/',

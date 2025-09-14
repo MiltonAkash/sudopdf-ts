@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIPromise } from 'sudopdf/core/api-promise';
+import { APIPromise } from '@sudopdf/sdk/core/api-promise';
 
 import util from 'node:util';
-import Sudopdf from 'sudopdf';
-import { APIUserAbortError } from 'sudopdf';
+import Sudopdf from '@sudopdf/sdk';
+import { APIUserAbortError } from '@sudopdf/sdk';
 const defaultFetch = fetch;
 
 describe('instantiate client', () => {

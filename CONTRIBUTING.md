@@ -55,12 +55,12 @@ $ cd sudopdf-ts
 # With yarn
 $ yarn link
 $ cd ../my-package
-$ yarn link sudopdf
+$ yarn link @sudopdf/sdk
 
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global sudopdf
+$ pnpm link -—global @sudopdf/sdk
 ```
 
 ## Running tests

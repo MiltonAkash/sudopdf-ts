@@ -1,5 +1,5 @@
-import { multipartFormRequestOptions, createForm } from 'sudopdf/internal/uploads';
-import { toFile } from 'sudopdf/core/uploads';
+import { multipartFormRequestOptions, createForm } from '@sudopdf/sdk/internal/uploads';
+import { toFile } from '@sudopdf/sdk/core/uploads';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {

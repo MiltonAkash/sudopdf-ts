@@ -9,8 +9,8 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
-      "sudopdf/*": ["src/*"],
-      "sudopdf": ["src/index.ts"]
+      "@sudopdf/sdk/*": ["src/*"],
+      "@sudopdf/sdk": ["src/index.ts"]
     },
     "noEmit": true,
 

@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Sudopdf from 'sudopdf';
+import Sudopdf from '@sudopdf/sdk';
 
 const client = new Sudopdf({
   apiKey: 'My API Key',
