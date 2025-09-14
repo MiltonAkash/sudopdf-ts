@@ -1,4 +1,4 @@
-configured_endpoints: 19
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/sudopdf%2Fsudopdf-6937085190e3e5553f943ff22deda900cd8ad4bf5e37278cba7de683b78ae8d2.yml
-openapi_spec_hash: 85dc5d1e011be6539c240594f06f284b
-config_hash: 1f1734bbcd3e73b237a227cf6b9e449e
+configured_endpoints: 1
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/sudopdf%2Fsudopdf-d43356a540fe017af664622cf848acd8bbe6d7d287c8979e2e2ea0eb2e08aeb4.yml
+openapi_spec_hash: 682ce8613e33145195cdf9e3f3a9d126
+config_hash: 0440f4d1cc54e81424a5ab7afc6d37a5

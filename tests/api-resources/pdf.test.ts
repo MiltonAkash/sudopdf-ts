@@ -7,10 +7,10 @@ const client = new Sudopdf({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource store', () => {
+describe('resource pdf', () => {
   // Prism tests are disabled
-  test.skip('listInventory', async () => {
-    const responsePromise = client.store.listInventory();
+  test.skip('generate', async () => {
+    const responsePromise = client.pdf.generate({});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;

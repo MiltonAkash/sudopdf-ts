@@ -25,13 +25,11 @@ The full API of this library can be found in [api.md](api.md).
 ```js
 import Sudopdf from 'sudopdf';
 
-const client = new Sudopdf({
-  apiKey: process.env['PETSTORE_API_KEY'], // This is the default and can be omitted
-});
+const client = new Sudopdf();
 
-const order = await client.store.orders.create({ petId: 1, quantity: 1, status: 'placed' });
+const response = await client.pdf.generate();
 
-console.log(order.id);
+console.log(response.data);
 ```
 
 ### Request & Response types
@@ -42,11 +40,9 @@ This library includes TypeScript definitions for all request params and response
 ```ts
 import Sudopdf from 'sudopdf';
 
-const client = new Sudopdf({
-  apiKey: process.env['PETSTORE_API_KEY'], // This is the default and can be omitted
-});
+const client = new Sudopdf();
 
-const response: Sudopdf.StoreListInventoryResponse = await client.store.listInventory();
+const response: Sudopdf.PdfGenerateResponse = await client.pdf.generate();
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -59,7 +55,7 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-const response = await client.store.listInventory().catch(async (err) => {
+const response = await client.pdf.generate().catch(async (err) => {
   if (err instanceof Sudopdf.APIError) {
     console.log(err.status); // 400
     console.log(err.name); // BadRequestError
@@ -95,11 +91,12 @@ You can use the `maxRetries` option to configure or disable this:
 ```js
 // Configure the default for all requests:
 const client = new Sudopdf({
+  apiKey: 'My API Key',
   maxRetries: 0, // default is 2
 });
 
 // Or, configure per-request:
-await client.store.listInventory({
+await client.pdf.generate({
   maxRetries: 5,
 });
 ```
@@ -112,11 +109,12 @@ Requests time out after 1 minute by default. You can configure this with a `time
 ```ts
 // Configure the default for all requests:
 const client = new Sudopdf({
+  apiKey: 'My API Key',
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
 });
 
 // Override per-request:
-await client.store.listInventory({
+await client.pdf.generate({
   timeout: 5 * 1000,
 });
 ```
@@ -139,13 +137,13 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 ```ts
 const client = new Sudopdf();
 
-const response = await client.store.listInventory().asResponse();
+const response = await client.pdf.generate().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: response, response: raw } = await client.store.listInventory().withResponse();
+const { data: response, response: raw } = await client.pdf.generate().withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(response);
+console.log(response.data);
 ```
 
 ### Logging
@@ -225,7 +223,7 @@ parameter. This library doesn't validate at runtime that the request matches the
 send will be sent as-is.
 
 ```ts
-client.store.orders.create({
+client.pdf.generate({
   // ...
   // @ts-expect-error baz is not yet public
   baz: 'undocumented option',
