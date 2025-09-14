@@ -1,12 +1,12 @@
 {
-  "name": "sudopdf",
-  "version": "0.0.1",
+  "name": "@sudopdf/sdk",
+  "version": "0.1.0",
   "description": "The official TypeScript library for the Sudopdf API",
   "author": "Sudopdf <>",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "commonjs",
-  "repository": "github:stainless-sdks/sudopdf-typescript",
+  "repository": "github:MiltonAkash/sudopdf-ts",
   "license": "MIT",
   "packageManager": "yarn@1.22.22",
   "files": [

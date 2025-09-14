@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "sudopdf/*": ["dist/src/*"],
-      "sudopdf": ["dist/src/index.ts"]
+      "@sudopdf/sdk/*": ["dist/src/*"],
+      "@sudopdf/sdk": ["dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,
