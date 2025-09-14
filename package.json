@@ -1,6 +1,6 @@
 {
   "name": "@sudopdf/sdk",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "The official TypeScript library for the Sudopdf API",
   "author": "Sudopdf <>",
   "types": "dist/index.d.ts",
