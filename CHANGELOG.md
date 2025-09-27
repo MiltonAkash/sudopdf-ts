@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.1.1 (2025-09-27)
+
+Full Changelog: [v0.1.0...v0.1.1](https://github.com/MiltonAkash/sudopdf-ts/compare/v0.1.0...v0.1.1)
+
+### Performance Improvements
+
+* faster formatting ([dd96d9c](https://github.com/MiltonAkash/sudopdf-ts/commit/dd96d9c887658ff022559da8bffb0260f270dbc4))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([2333a94](https://github.com/MiltonAkash/sudopdf-ts/commit/2333a9482df2e1e5d2bb305257ec51c8de658710))
+* **internal:** codegen related update ([b931879](https://github.com/MiltonAkash/sudopdf-ts/commit/b9318790c80274897eaf24773e331b8370d7aa4c))
+* **internal:** fix incremental formatting in some cases ([4837672](https://github.com/MiltonAkash/sudopdf-ts/commit/483767217642e4e50b6b62eb7bdaf6fff59cd268))
+* **internal:** ignore .eslintcache ([29806d6](https://github.com/MiltonAkash/sudopdf-ts/commit/29806d60dfc7cc56518077e6417384ffa88c3e30))
+* **internal:** remove deprecated `compilerOptions.baseUrl` from tsconfig.json ([4370054](https://github.com/MiltonAkash/sudopdf-ts/commit/43700541921fd36b00d1d730f96372efae0e652a))
+
 ## 0.1.0 (2025-09-14)
 
 Full Changelog: [v0.0.1...v0.1.0](https://github.com/MiltonAkash/sudopdf-ts/compare/v0.0.1...v0.1.0)
