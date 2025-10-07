@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.2 (2025-10-07)
+
+Full Changelog: [v0.1.1...v0.1.2](https://github.com/MiltonAkash/sudopdf-ts/compare/v0.1.1...v0.1.2)
+
+### Chores
+
+* **internal:** remove .eslintcache ([742abd1](https://github.com/MiltonAkash/sudopdf-ts/commit/742abd1d5d2fa930978513c0a99904cc9eb93a45))
+* **internal:** use npm pack for build uploads ([ef53ee8](https://github.com/MiltonAkash/sudopdf-ts/commit/ef53ee89cdc3f7d5db69188a732ea42452d3b168))
+* **jsdoc:** fix [@link](https://github.com/link) annotations to refer only to parts of the package‘s public interface ([27a15a2](https://github.com/MiltonAkash/sudopdf-ts/commit/27a15a2de9376ae305b286869bc927b5431e4217))
+
 ## 0.1.1 (2025-09-27)
 
 Full Changelog: [v0.1.0...v0.1.1](https://github.com/MiltonAkash/sudopdf-ts/compare/v0.1.0...v0.1.1)
